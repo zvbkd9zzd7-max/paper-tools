@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import importlib
 import importlib.util
@@ -151,8 +152,33 @@ def run_experiment(input_file: Path, results_dir: Path, label: str) -> list[dict
     return metrics
 
 
+def resolve_cli_path(path: Path) -> Path:
+    return path if path.is_absolute() else ROOT / path
+
+
+def infer_label(input_file: Path, output_dir: Path) -> str:
+    combined = f"{input_file} {output_dir}".lower()
+    if "jieba" in combined:
+        return "jieba"
+    if "hanlp" in combined:
+        return "HanLP"
+    return "LDA"
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run gensim LDA experiments for K=3, K=5, and K=10.")
+    parser.add_argument("--input", type=Path, default=INPUT_FILE, help="LDA input text file, one document per line.")
+    parser.add_argument("--output", type=Path, default=RESULTS_DIR, help="Directory for metrics, topics, plots, and LDAvis HTML.")
+    parser.add_argument("--label", default=None, help="Optional label used in console logs and plot titles.")
+    return parser.parse_args()
+
+
 def main() -> None:
-    run_experiment(INPUT_FILE, RESULTS_DIR, "HanLP")
+    args = parse_args()
+    input_file = resolve_cli_path(args.input)
+    output_dir = resolve_cli_path(args.output)
+    label = args.label or infer_label(input_file, output_dir)
+    run_experiment(input_file, output_dir, label)
 
 
 if __name__ == "__main__":
