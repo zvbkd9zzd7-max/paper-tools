@@ -107,13 +107,13 @@ data/processed/lda_input_jieba.txt
 在项目根目录运行：
 
 ```bash
-python src/train_gensim_lda.py --input data/processed/lda_input_hanlp.txt --output results
+python src/train_gensim_lda_hanlp.py
 ```
 
 输出结果保存在：
 
 ```text
-results/
+results_hanlp/
 ```
 
 主要结果包括：
@@ -137,7 +137,7 @@ lda_vis_K10.html
 在项目根目录运行：
 
 ```bash
-python src/train_gensim_lda.py --input data/processed/lda_input_jieba.txt --output results_jieba
+python src/train_gensim_lda_jieba.py
 ```
 
 输出结果保存在：
@@ -201,7 +201,7 @@ HanLP + K=5
 打开：
 
 ```text
-results/lda_metrics.csv
+results_hanlp/lda_metrics.csv
 results_jieba/lda_metrics.csv
 ```
 
@@ -212,9 +212,9 @@ results_jieba/lda_metrics.csv
 打开：
 
 ```text
-results/topics_K3.txt
-results/topics_K5.txt
-results/topics_K10.txt
+results_hanlp/topics_K3.txt
+results_hanlp/topics_K5.txt
+results_hanlp/topics_K10.txt
 ```
 
 或：
@@ -232,7 +232,7 @@ results_jieba/topics_K10.txt
 双击打开：
 
 ```text
-results/lda_vis_K5.html
+results_hanlp/lda_vis_K5.html
 ```
 
 或：
