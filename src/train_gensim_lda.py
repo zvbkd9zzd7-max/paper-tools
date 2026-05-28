@@ -61,10 +61,8 @@ def try_export_ldavis(model: LdaModel, corpus, dictionary: Dictionary, output_pa
         import pyLDAvis
         import pyLDAvis.gensim_models as gensimvis
 
-        vis_data = gensimvis.prepare(model, corpus, dictionary)
-        html = pyLDAvis.prepared_data_to_html(vis_data)
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(html)
+git add src/train_gensim_lda.py
+git commit -m "Resolve merge conflict in pyLDAvis export"
         return True, "ok"
     except Exception as exc:  # noqa: BLE001
         return False, str(exc)
