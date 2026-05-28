@@ -68,6 +68,8 @@ python train_gensim_lda.py
 
 ## jieba LDA 对照实验
 
+本节为合并冲突后的保留版本：继续保留 jieba 对照实验说明，并删除所有 Git 冲突标记。
+
 HanLP 实验仍使用原来的输出目录 `results/`：
 
 ```bash
